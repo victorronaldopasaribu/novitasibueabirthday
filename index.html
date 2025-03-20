@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novita Sibuea Birthday</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            text-align: center;
+            background: #0f0f0f;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            min-height: 100vh; /* Ubah height ke min-height */
+            overflow-y: auto; /* Tambahkan ini */
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+    padding: 0 16px; /* Tambahkan padding agar isi tidak mepet */
+}
+
+label {
+    display: block; /* Pastikan label tampil di atas input */
+    margin-bottom: 5px;
+}
+
+        .gradient {
+            position: absolute;
+            width: 40vw; /* Gunakan persentase dari viewport */
+            height: 40vw; 
+            max-width: 300px; /* Batasi ukuran maksimum */
+            max-height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.5) 10%, transparent 60%);
+            border-radius: 50%;
+            opacity: 0.7;
+            filter: blur(50px);
+            animation: moveGradient 10s infinite alternate ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .gradient {
+                width: 10vw;
+                height: 30vw;
+                max-width: 100%;
+                max-height: 200px;
+                filter: blur(30px); /* Kurangi blur agar tidak menyebar keluar */
+            }
+        }
+
+        @keyframes moveGradient {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(50px) translateX(50px); }
+        }
+
+        /* Efek animasi hati */
+        .heart {
+            position: absolute;
+            color: rgba(255, 64, 129, 0.8);
+            font-size: 20px;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        #countdown {
+            display: block;
+            font-size: 80px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            width: 120px; /* Pastikan lebar cukup besar untuk teks */
+            text-align: center;
+            margin: 20px auto;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .hidden { display: none; }
+
+        #gallery img, #gallery video {
+            width: 250px;
+            height: 430px;
+            margin: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #gallery img:hover, #gallery video:hover {
+            transform: rotateY(10deg) scale(1.1);
+        }
+
+        #message {
+            font-size: 22px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #000000, #5a0d41); /* Hitam ke pink gelap */
+            padding: 15px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 20, 147, 0.5);
+            margin-top: 20px;
+            width: 60%;
+            text-align: center; 
+            white-space: pre-line;
+            overflow: hidden;
+            display: none;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+
+        /* Efek partikel kecil (seperti kilauan cinta 💖) */
+        #message::before {
+            content: "✨💖";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        #message::after {
+            content: "💖✨";
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: sparkle 1.5s infinite alternate-reverse;
+        }
+
+        /* Animasi kilauan */
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            #message {
+                font-size: 16px; /* Kurangi ukuran font */
+                padding: 12px; /* Sesuaikan padding */
+                width: 80%; /* Lebarkan agar lebih pas di layar HP */
+            }
+
+            label {
+                padding-left: 15px; /* Tambahkan jarak dari kiri */
+            }
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            background: #ff4081;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #e6005c;
+            transform: scale(1.1);
+        }
+
+        #candles {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .candle {
+            width: 30px;
+            height: 80px;
+            background: #ffcc80;
+            border-radius: 5px;
+            margin: 5px;
+            position: relative;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translate(-50%, -100%) scale(1);
+                opacity: 0.9;
+                background: rgb(255, 140, 0); /* Oranye terang */
+                box-shadow: 0 0 8px rgba(255, 140, 0, 0.9);
+            }
+            50% {
+                transform: translate(-50%, -102%) scale(1.1);
+                opacity: 0.7;
+                background: rgb(255, 100, 0); /* Lebih merah */
+                box-shadow: 0 0 12px rgba(255, 100, 0, 1);
+            }
+            100% {
+                transform: translate(-50%, -100%) scale(0.9);
+                opacity: 0.8;
+                background: rgb(255, 165, 0); /* Oranye terang kembali */
+                box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+            }
+        }
+
+        .flame {
+            width: 14px;
+            height: 22px;
+            background: rgb(255, 140, 0);
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            border-radius: 50%;
+            animation: flicker 0.3s infinite alternate ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.9);
+        }
+
+        .flame.out {
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translate(-50%, -100%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -100%) scale(0.5); }
+        }
+
+        @keyframes clap-motion {
+    0% {
+        transform: scale(1) rotate(0deg) translateY(0);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg) translateY(-5px);
+    }
+    100% {
+        transform: scale(1) rotate(0deg) translateY(0);
+    }
+}
+
+.clap-animation {
+    font-size: 30px;
+    display: inline-block;
+    animation: clap-motion 0.2s infinite alternate ease-in-out;
+}
+
+        #blowCountdown {
+            font-weight: bold;
+            font-size: large;
+            color: #fff;
+            text-shadow: 
+                0 0 5px #ff0000, 
+                0 0 10px #ff0000, 
+                0 0 15px #ff4500, 
+                0 0 20px #ff4500;
+        }
+
+        #showContent {
+            background-color: #e11279;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            position: relative;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s ease;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        #showContent:hover {
+            background-color: #ff1493;
+        }
+
+        #content {
+            display: none;
+        }
+
+        .slider {
+            width: 80%;
+            height: 10px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity .15s ease-in-out;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: none;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #4A90E2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+            outline: none;
+            background: #fff;
+        }
+        @keyframes neonGlow {
+        0% { text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000; }
+        50% { text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733; }
+        100% { text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000; }
+    }
+
+    @keyframes crazyShake {
+        0% { transform: rotate(-3deg) scale(1.1); }
+        25% { transform: rotate(3deg) scale(1.2); }
+        50% { transform: rotate(-3deg) scale(1.1); }
+        75% { transform: rotate(3deg) scale(1.2); }
+        100% { transform: rotate(-3deg) scale(1.1); }
+    }
+
+    #loveText {
+        animation: neonGlow 1s infinite alternate, crazyShake 0.5s infinite alternate;
+    }
+
+    #fromText {
+        animation: neonGlow 1.5s infinite alternate, bounce 2s infinite;
+    }
+    </style>
+</head>
+<body>
+    <div class="gradient" style="top: 10%; left: 20%;"></div>
+    <div class="gradient" style="top: 50%; left: 70%;"></div>
+    <div class="gradient" style="top: 80%; left: 30%;"></div>
+    <div class="gradient" style="top: 10%; left: 80%;"></div>
+    <div class="gradient" style="top: 60%; left: 10%;"></div>
+    <button id="showContent">Click me!!!!</button>
+    <audio autoplay id="bday_song" src="bday_song.mp3"></audio>
+    <div id="content">
+        <h1 class="animate__animated animate__zoomIn">Haiiiii, Novita Sibuea</h1>
+        <h1 class="animate__animated animate__zoomIn">𐙚⋆°｡⋆♡♡⋆｡°⋆𐙚</h1>
+        <div id="countdown">7</div>
+
+        <div id="gallery" class="hidden animate__animated animate__fadeInUp">
+            <img id="image1" src="photo1.jpg" class="animate__animated animate__fadeIn" />
+            <video class="animate__animated animate__fadeIn" autoplay muted loop>
+                <source src="video_play.mp4" type="video/mp4">
+            </video>    
+            <img id="image2" src="photo2.jpg" class="animate__animated animate__fadeIn" />   
+        </div>
+        
+        <button id="showMessage" class="hidden animate__animated animate__pulse animate__infinite">Ada pesan buat kamu!!!</button>
+        <audio loop id="birthdaySong" src="song.mp3" muted></audio>
+    </div>
+    <!-- <div id="gallery" class="hidden animate__animated animate__fadeInUp">
+        <img id="image1" src="photo1.jpg" class="animate__animated animate__fadeIn" />
+        <video class="animate__animated animate__fadeIn" autoplay muted loop>
+            <source src="video_play.mp4" type="video/mp4">
+        </video>    
+        <img id="image2" src="photo2.jpg" class="animate__animated animate__fadeIn" />   
+    </div>
+    
+    <button id="showMessage" class="hidden animate__animated animate__pulse animate__infinite">Lihat Pesan</button>
+    <audio loop id="birthdaySong" src="song.mp3" muted></audio> -->
+    <script>
+        document.getElementById("showMessage").addEventListener("click", function () {
+            let previousSong = document.getElementById("bday_song");
+            let newSong = document.getElementById("birthdaySong");
+            previousSong.pause();
+            previousSong.currentTime = 0;
+            newSong.currentTime = 1;
+            newSong.muted = false;
+            newSong.play().catch(error => console.log("Autoplay gagal:", error));
+        });
+    </script>
+    <p id="message"></p>
+    <p id="blowText" class="hidden px-10 text-center">Sekarang tiup lilinnya ya, dalam hitungan <span id="blowCountdown">10</span> detik</p>
+    <div id="candles" class="hidden"></div>
+    <div id="questions" class="hidden">
+        <div class="mt-4">
+            <label for="harapan" class="block text-lg">Tulis harapanmu di sini:</label>
+            <textarea id="harapan" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Tulis harapanmu..."></textarea>
+            <button id="sendWish" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Kirim</button>
+        </div>
+        <h2 class="text-xl font-bold">Jawab jujur pertanyaan berikut ya sayanggg!</h2>
+        <div class="mt-4">
+            <label for="q1" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa bahagia kamu hari ini?</label>
+            <input id="q1" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q1-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q2" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa spesial hari ini untukmu?</label>
+            <input id="q2" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q2-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q3" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa kamu menyukai kejutan ini?</label>
+            <input id="q3" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q3-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q4" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa besar cintamu padaku? ❤️</label>
+            <input id="q4" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q4-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q5" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa sering kamu memikirkan aku hari ini? 🤔</label>
+            <input id="q5" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q5-value" class="text-center mt-2">5</p>
+        </div>   
+        <div class="mt-4">
+            <label for="q6" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa gemes kamu sama aku sekarang? 😘</label>
+            <input id="q6" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q6-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q7" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa besar kemungkinan kamu akan peluk aku sekarang kalau bisa? 🤗</label>
+            <input id="q7" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q7-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q8" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa sering kamu merindukanku kalau kita jauh? 💕</label>
+            <input id="q8" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q8-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q9" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa besar kemungkinan buat beliin aku makanan enak? 🍔🍕</label>
+            <input id="q9" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q9-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q10" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa besar kemungkinan kamu bakal manjain aku hari ini? 🥰</label>
+            <input id="q10" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q10-value" class="text-center mt-2">5</p>
+        </div>
+        <div class="mt-4">
+            <label for="q11" class="block text-lg w-3/4 md:w-2/3 lg:w-1/2">Seberapa sering kamu merasa beruntung punya aku? 😍</label>
+            <input id="q11" type="range" min="0" max="10" value="5" class="w-full slider"/>
+            <p id="q11-value" class="text-center mt-2">5</p>
+        </div>
+        <h2 class="text-xl font-bold">Screenshot terus wa pacarmu sekarang juga!!!</h2>
+        <div class="mt-6 text-center">
+            <button id="sendToWhatsapp" class="bg-green-500 text-white px-6 py-2 rounded-lg text-lg font-semibold">Kalo mager, klik ini yaa</button>
+        </div>
+        <div class="text-center mt-10">
+            <h2 class="text-4xl font-bold text-red-500 animate-bounce" id="loveText">I Love You ❤️</h2>
+            <p class="text-xl font-semibold text-purple-600 mt-2 animate-pulse" id="fromText">From: Victor Pasaribu</p>
+        </div>
+    </div>
+    <script>
+        let countdown = 7;
+        let countdownElement = document.getElementById('countdown');
+        let gallery = document.getElementById('gallery');
+        let button = document.getElementById('showMessage');
+        let messageElement = document.getElementById('message');
+        let song = document.getElementById('birthdaySong');
+        let messages = [
+            "Selamat Ulang Tahun, hasiankuuuuu 🎉",
+            // "Andigan on ari na istimewa jala Tuhan hasuhuton mangalehon umur na lao.",
+            // "Hupasahat ma pasu-pasu ni Tuhan tu ho, sebab ho do anugerah na umbahen dompak ho di bagasan hangoluanhu.",
+            // "Ho do nauli, ho do hasianhu, jala ho do parhobasanku.",
+            // "Di Yeremia 29:11, nunga dituliskon:",
+            // "Ai Ingkon hubegei angka rencana na denggan tu ho, nang rencana ni damai do, asa unang marsangap roham, unang marhunjut roham, ai Debata do na matei tu ho, naeng ma manangiang masa depanmu.",
+            // "Tuhan hasuhuton mamasu-masu ho, manjaloho hamu tu panggabean, maningkot ma pinangan tu ho jala managah ma bagasan hangoluan ho.",
+            // "Tarlumobi hu sahalak tu ho, huhaholongi ho di angka sipanganonhu, jala huhapurus tu ho torus ma taringot tu pargogoonhon!",
+            // "Selamat ulang tahun, hasianhu! Molo ingkon horas ho, holong ni roham gabe be ho, jala manurang ho.",
+            // "Tuhan Jesus pasu-pasuhu tu ho sian on tu jolo! Huhaholongi ho lebbih sian hasian na mangalehon! ❤️"
+        ];
+        let image1 = document.getElementById("image1");
+        let image2 = document.getElementById("image2");
+        let images1 = ["photo1.jpg", "photo3.jpg", "photo5.jpg", "photo7.jpg", "photo9.jpg", "photo11.jpg", "photo13.jpg", "photo15.jpg", "photo17.jpg", "photo19.jpg", "photo21.jpg"];
+        let images2 = ["photo2.jpg", "photo4.jpg", "photo6.jpg", "photo8.jpg", "photo10.jpg", "photo12.jpg", "photo14.jpg", "photo16.jpg", "photo18.jpg", "photo20.jpg", "photo22.jpg", "photo24.jpg"];
+        let index1 = 0, index2 = 0;
+        function changeImages() {
+            index1 = (index1 + 1) % images1.length;
+            index2 = (index2 + 1) % images2.length;
+            image1.src = images1[index1];
+            image2.src = images2[index2];
+        }
+        setInterval(changeImages, 2000);
+
+        let interval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown === 0) {
+                clearInterval(interval);
+                countdownElement.style.display = 'none';
+                gallery.classList.remove('hidden');
+                button.classList.remove('hidden');
+                song.play();
+            }
+        }, 1000);
+
+        button.addEventListener('click', () => {
+            button.style.display = 'none';
+            messageElement.style.display = 'block';
+            typeMessage(0);
+        });
+
+        function showCandles() {
+            let candlesContainer = document.getElementById('candles');
+            let blowText = document.getElementById('blowText');
+            let blowCountdown = document.getElementById('blowCountdown');
+            candlesContainer.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                let candle = document.createElement('div');
+                candle.classList.add('candle');
+                let flame = document.createElement('div');
+                flame.classList.add('flame');
+                candle.appendChild(flame);
+                candlesContainer.appendChild(candle);
+            }
+            candlesContainer.classList.remove('hidden');
+            blowText.classList.remove('hidden');
+            startBlowCountdown(blowCountdown);
+        }
+
+        document.querySelectorAll(".slider").forEach(slider => {
+            slider.addEventListener("input", function() {
+                let valueDisplay = document.getElementById(this.id + "-value");
+                valueDisplay.textContent = this.value;
+            });
+        });
+
+        function showQuestions() {
+            document.getElementById("questions").classList.remove("hidden");
+        }
+
+        function startBlowCountdown(element) {
+            let count = 10;
+            let interval = setInterval(() => {
+                element.textContent = count;
+                count--;
+                if (count < 0) {
+                    clearInterval(interval);
+                    let flames = document.querySelectorAll('.flame');
+                    flames.forEach(flame => flame.classList.add('out'));
+                    let textElement = document.getElementById('blowText');
+                    textElement.innerHTML = "<span class='clap-animation'>👏</span> <span class='clap-animation'>👏</span> <span class='clap-animation'>👏</span>"; 
+                    showQuestions();
+                }
+            }, 1000);
+        }
+
+        function typeMessage(index) {
+            if (index < messages.length) {
+                let paragraph = document.createElement('p');
+                    paragraph.style.opacity = 0;
+                    messageElement.appendChild(paragraph);
+                    
+                    let i = 0;
+                    let text = messages[index];
+                    let typingInterval = setInterval(() => {
+                        if (i < text.length) {
+                            paragraph.textContent += text[i];
+                            i++;
+                        } else {
+                            clearInterval(typingInterval);
+                            setTimeout(() => typeMessage(index + 1), 1000);
+                        }
+                    }, 100);
+                    
+                    let fadeIn = setInterval(() => {
+                        let opacity = parseFloat(paragraph.style.opacity);
+                        if (opacity < 1) {
+                            paragraph.style.opacity = opacity + 0.1;
+                        } else {
+                            clearInterval(fadeIn);
+                        }
+                    }, 50);
+                    song.play();
+            } else {
+                setTimeout(showCandles, 1000);    
+            }
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    let leftPosition = Math.random() * 90 + 5; // Hindari terlalu ke pinggir
+                    heart.style.left = leftPosition + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 5000);       
+            }, 200);       
+        }
+        createHearts();
+
+        document.getElementById("sendWish").addEventListener("click", function () {
+            let wishText = document.getElementById("harapan").value;
+            if (wishText.trim() !== "") {
+                let waLink = `https://wa.me/6282281178448?text=${encodeURIComponent(wishText)}`;
+                window.open(waLink, "_blank");
+            } else {
+                alert("Silakan isi harapan terlebih dahulu!");
+            }
+        });
+
+        document.getElementById("showContent").addEventListener("click", function () {
+            document.getElementById("content").style.display = "block";
+            this.style.display = "none"; // Sembunyikan tombol setelah diklik
+
+            // Mulai lagu ulang tahun setelah tombol diklik
+            let song = document.getElementById("bday_song");
+            song.currentTime = 0;
+            song.muted = false;
+            song.play().catch(error => console.log("Autoplay gagal:", error));
+            countdown = 7;
+            countdownElement.innerText = countdown;
+        });
+
+        document.getElementById('sendToWhatsapp').addEventListener('click', function() {
+            let message = "Jawaban pertanyaanku sayang 🥰:\n\n";
+            for (let i = 1; i <= 11; i++) {
+                let question = document.querySelector(`label[for="q${i}"]`).innerText;
+                let answer = document.getElementById(`q${i}`).value;
+                message += `${question} : ${answer}/10\n`;
+            }
+
+            // Ganti dengan nomor WhatsApp yang dituju (format internasional tanpa "+")
+            let phoneNumber = "6282281178448"; 
+
+            let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
