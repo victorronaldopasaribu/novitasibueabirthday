@@ -363,7 +363,8 @@ label {
     <div id="content">
         <h1 class="animate__animated animate__zoomIn">Haiiiii, Novita Sibuea</h1>
         <h1 class="animate__animated animate__zoomIn">𐙚⋆°｡⋆♡♡⋆｡°⋆𐙚</h1>
-        <div id="countdown">7</div>
+        <!-- <div id="countdown">7</div> -->
+         <div id="countdown" class="hidden">7</div>
 
         <div id="gallery" class="hidden animate__animated animate__fadeInUp">
             <img id="image1" src="photo1.jpg" class="animate__animated animate__fadeIn" />
@@ -376,16 +377,6 @@ label {
         <button id="showMessage" class="hidden animate__animated animate__pulse animate__infinite">Ada pesan buat kamu!!!</button>
         <audio loop id="birthdaySong" src="song.mp3" muted></audio>
     </div>
-    <!-- <div id="gallery" class="hidden animate__animated animate__fadeInUp">
-        <img id="image1" src="photo1.jpg" class="animate__animated animate__fadeIn" />
-        <video class="animate__animated animate__fadeIn" autoplay muted loop>
-            <source src="video_play.mp4" type="video/mp4">
-        </video>    
-        <img id="image2" src="photo2.jpg" class="animate__animated animate__fadeIn" />   
-    </div>
-    
-    <button id="showMessage" class="hidden animate__animated animate__pulse animate__infinite">Lihat Pesan</button>
-    <audio loop id="birthdaySong" src="song.mp3" muted></audio> -->
     <script>
         document.getElementById("showMessage").addEventListener("click", function () {
             let previousSong = document.getElementById("bday_song");
@@ -472,7 +463,7 @@ label {
         </div>
     </div>
     <script>
-        let countdown = 7;
+        let countdown;
         let countdownElement = document.getElementById('countdown');
         let gallery = document.getElementById('gallery');
         let button = document.getElementById('showMessage');
@@ -632,12 +623,12 @@ label {
             song.currentTime = 0;
             song.muted = false;
             song.play().catch(error => console.log("Autoplay gagal:", error));
-            countdown = 7;
+            countdown = 6;
             countdownElement.innerText = countdown;
         });
 
         document.getElementById('sendToWhatsapp').addEventListener('click', function() {
-            let message = "Jawaban pertanyaanku sayang 🥰:\n\n";
+            let message = "Hai sayang! Aku udah jawab pertanyaan ulang tahunku 😘🥰:\n\n";
             for (let i = 1; i <= 11; i++) {
                 let question = document.querySelector(`label[for="q${i}"]`).innerText;
                 let answer = document.getElementById(`q${i}`).value;
