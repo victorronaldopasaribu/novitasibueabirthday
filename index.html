@@ -389,7 +389,7 @@ label {
         });
     </script>
     <p id="message"></p>
-    <p id="blowText" class="hidden px-10 text-center">Sekarang tiup lilinnya ya, dalam hitungan <span id="blowCountdown">10</span> detik</p>
+    <p id="blowText" class="hidden px-10 text-center">Sekarang tiup lilinnya ya, dalam hitungan <br><span id="blowCountdown">10</span> detik</p>
     <div id="candles" class="hidden"></div>
     <div id="questions" class="hidden">
         <div class="mt-4">
@@ -623,7 +623,7 @@ label {
             song.currentTime = 0;
             song.muted = false;
             song.play().catch(error => console.log("Autoplay gagal:", error));
-            countdown = 6;
+            countdown = 7;
             countdownElement.innerText = countdown;
         });
 
